@@ -12,5 +12,5 @@ public interface Dao {
     long addData(Data data);
 
     @Query("SELECT * FROM log_db")
-    List<Data>getData();
+    List<Data> getData();
 }

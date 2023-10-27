@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     String status;
     static Data data = new Data();
     List<Data> list = new ArrayList<Data>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         rvData = findViewById(R.id.rv_data);
 
-        rvData.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL , false));
+        rvData.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         adapter = new Adapter();
         rvData.setAdapter(adapter);
 
@@ -54,17 +55,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         WorkManager.getInstance(this).getWorkInfoByIdLiveData(workRequest.getId()).observe(this, new Observer<WorkInfo>() {
-                   @Override
-                   public void onChanged(WorkInfo workInfo) {
-                        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-                        data.setUUID(workRequest.getId());
-                        data.setStatus(workInfo.getState().name());
-                        data.setFinished(workInfo.getState().isFinished());
-                        data.setTimeNew(format.format(new Date(System.currentTimeMillis())));
-                        dao.addData(data);
+            @Override
+            public void onChanged(WorkInfo workInfo) {
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                data.setUUID(workRequest.getId());
+                data.setStatus(workInfo.getState().name());
+                data.setFinished(workInfo.getState().isFinished());
+                data.setTimeNew(format.format(new Date(System.currentTimeMillis())));
+                dao.addData(data);
 
-                       Log.d(TAG, "onChanged: success ");
-                   }
-               });
+                Log.d(TAG, "onChanged: success ");
+            }
+        });
     }
 }

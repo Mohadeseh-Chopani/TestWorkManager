@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolderData> {
 
-    List<Data>dataList=new ArrayList<>();
+    List<Data> dataList = new ArrayList<>();
 
     public void addInformations(List<Data> dataList) {
         this.dataList.addAll(dataList);
@@ -23,7 +23,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolderData> {
     @NonNull
     @Override
     public ViewHolderData onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolderData(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout , parent, false));
+        return new ViewHolderData(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false));
     }
 
     @Override
@@ -36,16 +36,18 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolderData> {
         return dataList.size();
     }
 
-    public class ViewHolderData extends RecyclerView.ViewHolder{
+    public class ViewHolderData extends RecyclerView.ViewHolder {
 
-        TextView tv_UUID,tv_status,tv_time;
+        TextView tv_UUID, tv_status, tv_time;
+
         public ViewHolderData(@NonNull View itemView) {
             super(itemView);
             tv_status = itemView.findViewById(R.id.tv_status);
             tv_UUID = itemView.findViewById(R.id.tv_UUID);
             tv_time = itemView.findViewById(R.id.tv_time);
         }
-        void bind(Data data){
+
+        void bind(Data data) {
             tv_UUID.setText(data.getUUID().toString());
             tv_status.setText(data.getStatus());
             tv_time.setText(data.getTimeNew());

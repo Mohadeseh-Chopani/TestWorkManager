@@ -19,16 +19,11 @@ public class Work extends Worker {
 
     Context context;
     WorkerParameters workerParameters;
-    Dao dao;
-   static String status;
-   static boolean isFinished = false;
 
-   WorkInfo workInfo ;
-    public Work(@NonNull Context context, @NonNull WorkerParameters workerParams,WorkInfo workInfo) {
+    public Work(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
         this.context = context;
-        this.workerParameters=workerParams;
-        this.workInfo = workInfo;
+        this.workerParameters = workerParams;
     }
 
     @NonNull
