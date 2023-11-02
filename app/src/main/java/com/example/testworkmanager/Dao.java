@@ -1,7 +1,9 @@
 package com.example.testworkmanager;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -12,5 +14,7 @@ public interface Dao {
     long addData(Data data);
 
     @Query("SELECT * FROM log_db")
-    List<Data> getData();
+    LiveData<List<Data>> getData();
+    @Update
+    int updateData(Data data);
 }

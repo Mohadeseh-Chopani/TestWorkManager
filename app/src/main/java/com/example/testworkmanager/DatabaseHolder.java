@@ -10,7 +10,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@Database(version = 1, exportSchema = false, entities = {Data.class})
+@Database(version = 2, exportSchema = false, entities = {Data.class})
 public abstract class DatabaseHolder extends RoomDatabase {
 
     private static DatabaseHolder databaseHolder;
