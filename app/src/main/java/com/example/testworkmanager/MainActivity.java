@@ -24,13 +24,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity implements Adapter.Listener{
+public class MainActivity extends AppCompatActivity implements Adapter.Listener {
 
     RecyclerView rvData;
     Dao dao;
     Adapter adapter;
     static WorkInfo Info;
     PeriodicWorkRequest workRequest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener{
         adapter = new Adapter(this);
         rvData.setAdapter(adapter);
 
-          workRequest= new PeriodicWorkRequest.Builder(Work.class, 1, TimeUnit.MINUTES)
+        workRequest = new PeriodicWorkRequest.Builder(Work.class, 1, TimeUnit.MINUTES)
                 .setInitialDelay(1, TimeUnit.MINUTES)
                 .build();
 
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements Adapter.Listener{
             @Override
             public void onChanged(WorkInfo workInfo) {
                 Info = workInfo;
-                Log.d(TAG, "onChanged: success "+Info.getId());
+                Log.d(TAG, "onChanged: success " + Info.getId());
                 dao.getData().observe(MainActivity.this, new Observer<List<Data>>() {
                     @Override
                     public void onChanged(List<Data> dataList) {

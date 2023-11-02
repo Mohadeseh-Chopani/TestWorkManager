@@ -15,6 +15,7 @@ public interface Dao {
 
     @Query("SELECT * FROM log_db")
     LiveData<List<Data>> getData();
+
     @Update
     int updateData(Data data);
 }

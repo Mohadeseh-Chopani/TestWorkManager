@@ -41,7 +41,7 @@ public class Work extends Worker {
         data.setFinished(MainActivity.Info.getState().isFinished());
         data.setTimeNew(format.format(new Date(System.currentTimeMillis())));
         dao.addData(data);
-        Log.d(TAG, "doWork: this work manager is running "+MainActivity.Info.getId());
+        Log.d(TAG, "doWork: this work manager is running " + MainActivity.Info.getId());
         return Result.success();
     }
 }
